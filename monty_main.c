@@ -1,27 +1,29 @@
 #include "monty.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 char **op_toks = NULL;
 
 /**
- * main - launches the monty bytecodes interpreter program.
- * @argc: the number of arguments supplied to the command line.
- * @argv: an array containing the user-supplied arguments.
- * Return: EXIT_SUCCESS on Success, EXIT_FAILURE on Error.
+ * main - the entry point for Monty Interp
+ *
+ * @argc: the count of arguments passed to the program
+ * @argv: pointer to an array of char pointers to arguments
+ *
+ * Return: (EXIT_SUCCESS) on success (EXIT_FAILURE) on error
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	FILE *fp;
-	int ret = EXIT_SUCCESS;
+	FILE *script_fd = NULL;
+	int exit_code = EXIT_SUCCESS;
 
 	if (argc != 2)
 		return (usage_error());
-
-	fp = fopen(argv[1], "r");
-	if (!fp)
+	script_fd = fopen(argv[1], "r");
+	if (script_fd == NULL)
 		return (f_open_error(argv[1]));
-
-	ret = run_monty(fp);
-
-	fclose(fp);
-	return (ret);
+	exit_code = run_monty(script_fd);
+	fclose(script_fd);
+	return (exit_code);
 }
