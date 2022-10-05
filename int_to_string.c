@@ -22,7 +22,7 @@ char *get_int(int num)
 	length = get_numbase_len(temp, 10);
 	if (num < 0)
 		length++; /* negative sign */
-	
+
 	ret = malloc(length + 1); /* create new string */
 	if (!ret)
 		return (NULL);
