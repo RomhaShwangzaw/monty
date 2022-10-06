@@ -25,10 +25,14 @@
 # MOVE TO BLOCK 0 WHERE THE PRODUCT IS
 <
 
-# DISPLAY EACH DIGIT OF THE PRODUCT BY PERFORMING THE RIGHT MODULO OPERATIONS
+# DIVIDE THE PRODUCT BY 10 AND STORE THE QUOTIENT AND REMAINDER
 >++++++++++<
 [->-[>+>>]>[+[-<+>]>+>>]<<<<<]
+
+# MOVE TO QUOTIENT BLOCK AND INCREASE BY ASCII '0' (INC 48)
 >>>++++++++++++++++++++++++++++++++++++++++++++++++.
+
+# MOVE TO REMAINDER BLOCK AND INCREASE BY ASCII '0' (INC 48)
 <++++++++++++++++++++++++++++++++++++++++++++++++.
 
 # DISPLAY A NEW LINE
